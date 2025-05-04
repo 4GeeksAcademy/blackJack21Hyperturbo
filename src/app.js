@@ -1,35 +1,20 @@
+//Renderizar la mano del jugador
+//Renderizar la primera carta del dealer dealerHand[0]
+//Función de renderizar carta
+//Diseño de las cartas ()
+//Modal del Resultado + Nueva Partida
+
+  // pedir => renderizar la carta nueva
+  // mostrar resultado + opción de nueva partida
+
 import "bootstrap";
 import "./style.css";
-
 
 window.onload = function() {
   //write your code here
   document.querySelector("body");
   console.dir(document.querySelector("#card"));
-  console.log("_______________");
-  document.querySelector("#card")//.algo 
-
-  // Crear Mazo done
-  // Barajearlo done
-  // Repartir dos cartas a cada 
-
-  // ir calculando valores
-
-  // turno del jugador{
-  //   pedir || plantarse
-  // }
-
-  // pedir => renderizar la carta nueva
-
-  // plantarse => turno de la banca
-
-  // turno de la banca{
-  //   pedir => renderizar la carta nueva
-  //   llegar a 17 o mas => plantarse y determinar resultado
-  // }
-
-  // mostrar resultado + opción de nueva partida
-
+  document.querySelector("#card")
 
   const palos = ['♦' , '♥' , '♠',  '♣'];
   const carta = [
@@ -46,7 +31,7 @@ window.onload = function() {
     {valor: 10,cuerpo: 'J'},
     {valor: 10,cuerpo: 'Q'},
     {valor: 10,cuerpo: 'K'},
-  ]
+  ];
 
   const crearMazo = () =>{
     const cardList = [];
@@ -62,80 +47,112 @@ window.onload = function() {
       }
     )
     return cardList;
-  }
-  let mazo = crearMazo();
+  };
+  // let mazo = crearMazo();
+  
 
-  console.log('Mazo inicial: ', mazo);
-const _barajarMazo = (mazo) => {
-  for (let i = mazo.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [mazo[i], mazo[j]] = [mazo[j], mazo[i]];
-  }
-  return mazo;
-};
+  const _barajarMazo = (mazo) => {
+    for (let i = mazo.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [mazo[i], mazo[j]] = [mazo[j], mazo[i]];
+    }
+    return mazo;
+  };
+  
 
-console.log('Mazo barajado: ', _barajarMazo(mazo));
+  const _getInitialHand = (mazo) => {
+    return [mazo.pop(), mazo.pop()];
+  };
 
-
-const _getInitialHand = (mazo) => {
-  return [mazo.pop(), mazo.pop()];
-};
-
-let playerHand = _getInitialHand(mazo)
-let dealerHand = _getInitialHand(mazo)
-
-console.log('Mano del jugador: ', playerHand);
-console.log('Mano del dealer: ', dealerHand);
-
-
+  // let playerHand = _getInitialHand(mazo);
+  // let dealerHand = _getInitialHand(mazo);
+  
 
   const _getValue = (hand) => hand.reduce((acc, carta) => {
     acc = acc + carta.valor;
     return acc;
   }, 0);
 
-let playerValue = _getValue(playerHand);
 
-let dealerValue = _getValue(dealerHand);
+  const _getResult = (playerValue, dealerValue) => {
+    if(playerValue > 21) {
+      return console.log('Has perdido');
+    }
+    if(dealerValue > 21) {
+     return console.log('Has ganado');
+    }
+    if(dealerValue < playerValue){
+      return console.log('Win');
+    }
+    if(playerValue < dealerValue){
+      return console.log('Lose');
+    }
+    return console.log('Draw');
+  };
 
-console.log("Puntos del jugador:", playerValue);
-console.log("Puntos del dealer:", dealerValue);
+  const pedirCarta = (mazo, hand, value) => {
+    if (value <= 21){
+      return [...hand, mazo.pop()]
+    }
+    return hand;
+  };
 
-//   const _getResult = (playerValue, dealerValue) => {
-//       if(playerValue > 21) {
-//         return console.log('Has perdido');
-//       }
-//       if(dealerValue > 21) {
-//         return console.log('Has ganado');
-//       }
-//       if(dealerValue < playerValue){
-//         return console.log('Win');
-//       }
-//       if(playerValue < dealerValue){
-//         return console.log('Lose');
-//       }
-//       return console.log('draw');
-//   }
-
- 
-//   const playGame = () => {
-//     // if(pedirCarta){
-//     //   hand + 1
-//     // }
+  const handlePedirCarta = () => {
+    playerHand = pedirCarta(mazo, playerHand, playerValue); 
+    playerValue = _getValue(playerHand);
+    // _renderPlayerCard();
   
-//     // if(playerPlantarse){
-//     //   turno del dealer
-//     // }
-//     // if(dealerValue > 16){
-//     //   comprobaResultados
-//     // }
+    console.log("Jugador pidió carta:", playerHand);
+    console.log("Puntos del jugador:", playerValue);
+  };
 
-//     const playerValue = _getValue(playerHand);
-//     const dealerValue = _getValue(dealerHand);
-//     const result = _getResult(playerValue, dealerValue);
-//     _renderResult(result, playerValue, dealerValue);
-//   }
+  const handlePlantarse = () => {
+    // _renderDealerHand();
+    _dealerTurn();
+    _getResult(playerValue, dealerValue);
+    // _renderResult();
+  }
+
+  const _dealerTurn = () =>{
+    //  _renderDealerCard();
+    if(dealerValue > 16) return;
+      dealerHand = pedirCarta(mazo, dealerHand, dealerValue); 
+      dealerValue = _getValue(dealerHand);
+      console.log("Dealer pidió carta:", dealerHand);
+      console.log("Puntos del dealer:", dealerValue);
+      _dealerTurn();
+  };
+
+  // const _isPlayerTurn = () =>{}
 
 
-// };
-}
+let playerHand = [];
+let playerValue = 0; 
+let dealerHand = [];
+let dealerValue = 0;  
+let mazo = [];
+
+const playGame = () => {
+   mazo = crearMazo();
+   console.log('Mazo inicial: ', mazo);
+   _barajarMazo(mazo);
+   console.log('Mazo barajado: ', _barajarMazo(mazo));
+   playerHand = _getInitialHand(mazo);
+   dealerHand = _getInitialHand(mazo);
+   playerValue = _getValue(playerHand);
+   dealerValue = _getValue(dealerHand);
+   console.log('Mano del jugador: ', playerHand);
+   console.log('Mano del dealer: ', dealerHand);
+   console.log(_getResult(playerValue, dealerValue));
+   console.log("Puntos del jugador:", playerValue);
+   console.log("Puntos del dealer:", dealerValue);
+   
+  //  _renderPlayerHand();
+  //  _renderDealerCard();
+  //  _nuevaPartida()
+  }
+
+  window.handlePedirCarta = handlePedirCarta;
+  window.handlePlantarse = handlePlantarse;
+  window.playGame = playGame;
+};

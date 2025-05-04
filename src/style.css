@@ -17,6 +17,12 @@ body{
     width: 100px;
     height: 200px;
 }
+.card-mazo{
+    min-width: 200px;
+    min-height: 100px;
+    width: 200px;
+    height: 100px;
+}
 .container-fluid{
     min-height: 800px;
 }
