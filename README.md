@@ -4,7 +4,7 @@ Creadores
 
 Antonio Barroso Sáez | Adrián Ferrer Torres
 
-Juego de Blackjack implementado con HTML, CSS y JavaScript puro (Vanilla JS) y estilizado con Bootstrap.
+Juego de Blackjack implementado con HTML, CSS y Vanilla JS y estilizado con Bootstrap.
 
 Descripción
 
