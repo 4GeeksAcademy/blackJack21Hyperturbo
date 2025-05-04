@@ -1,49 +1,35 @@
-<!-- hide -->
-# Hello World with Vanilla JS
+Blackjack 21 HyperTurbo
 
-> 🇪🇸 [Spanish version of this readme is available](./README.es.md).
-<!-- endhide -->
-Start coding a JS/HTML/CSS website in 30 seconds by opening this template using 4Geeks' [One-Click Coding](https://s.4geeks.com/start?repo=https://github.com/4GeeksAcademy/vanillajs-hello) or locally on your computer.
+Creadores
 
-## Before you begin
+Antonio Barroso Sáez | Adrián Ferrer Torres
 
-Install the packages by typing: `npm install`.
+Juego de Blackjack implementado con HTML, CSS y Vanilla JS y estilizado con Bootstrap.
 
-### How do I run my website to see live changes?  
+Descripción
 
-Type on the command line `$ npm run start` and type localhost on the browser.
+Este proyecto recrea una partida de Blackjack (21) para un jugador contra la banca (dealer). Incluye:
 
-### Where do I write my code?  
+Generación y barajado de mazo de 52 cartas.
 
-It depends on the language, but you have `./src/app.js`, `./src/style.css` and `./src/index.html` respectively, you can add new `.html` as you please, just make sure to import it on the `app.js`.
+Reparto inicial de dos cartas para jugador y banca.
 
-> Note: remember that the JS workflow starts inside `window.onload`.
+Botón Pedir carta ("Hit").
 
+Botón Plantarse ("Stand").
 
-## Troubleshooting
+Lógica de la banca que pide cartas hasta llegar a 17 o más.
 
-### I don't see my changes...
+Modal de resultado al terminar la partida.
 
-Everytime you change any file inside the `./src` folder the website's public URL will automatically refresh the changes (it's a process called hot deploy)
-Remember also to refresh cleaning the cache (`command+shift+r` on Mac, `control+shift+r` on PC & Linux)
+Botón Nueva Partida que recarga la página.
 
-### How do I include more images in my project?
+Tecnologías
 
-Add them inside the `./src/assets/img` folder and import them from any of your JS files. E.g: `import "../assets/img/rigo-baby.jpg";`
+HTML5
 
-### How do I include more JS files?
+CSS3
 
-Just add the files into the src folder and import the file/variables into your app.js. E.g: `import myVar from "./file2.js"`
+JavaScript (ES6+)
 
-### How do I publish the website?
-
-We have prepared the boilerplate to be compatible with [vercel](https://vercel.com/), very easy and in just one step! 
-You can read more about [deploying on vercel here](https://4geeks.com/docs/start/deploy-vercel).
-
-<!-- hide -->
-### Thank you
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning) or [CyberSecurity Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/cybersecurity)
-
-You can find other templates and resources like this at the [school's GitHub page](https://github.com/4geeksacademy/).
-<!-- endhide -->
+Bootstrap 5
