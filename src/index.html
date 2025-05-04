@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BlackJack</title>
-    <!-- Fontawesome is our recomended library for icons -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
@@ -13,33 +12,37 @@
     />
   </head>
   <body>
-    <!-- Write your HTML code here, you can delete everything withing the body tags -->
-    <div id="tapete" class="container-fluid container-sm text-center d-flex flex-column justify-content-between align-items-center py-5">
-      
-      <div id="banca" class="dealerContainer">
-        <p>cartas de la banca</p>
+    <div class="text-center d-flex justify-content-between align-items-center">
+      <div id="tapete" class="container-fluid container-sm text-center d-flex flex-column justify-content-between align-items-center py-5">
+        <div id="dealer" class="dealerContainer"></div>
+        <div id= "mazo" class="carta mazo"></div>
+        <div id="player" class="playerContainer"></div>
+        <div class="d-flex justify-content-center align-items-center mt-3 gap-3">
+          <button onclick="playGame()" class="btn btn-success">
+            Play Game
+          </button>
+          <button id="pedir-carta" onclick="handlePedirCarta()" class="btn btn-info">
+            pedir carta
+          </button>
+          <button onclick="handlePlantarse()" class="btn btn-primary">
+            plantarse
+          </button>
+        </div>
       </div>
-
-      <div id= "mazo" class="card card-mazo">
-        <p>aqui va el mazo</p>
+      <div class="modal" id="resultModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content text-center p-4">
+            <p id="resultText" class="h4 mb-3"></p>
+            <p>Jugador: <span id="playerScore"></span>  —  Banca: <span id="dealerScore"></span></p>
+            <button type="button" class="btn btn-primary mt-3" onclick="location.reload()">
+              Nueva Partida
+            </button>
+          </div>
+        </div>
       </div>
-
-      <div id="player" class="playerContainer"></div>
-
-      <div>
-        <button onclick="playGame()" class="btn btn-success">
-          Play Game
-        </button> 
-        <button id="pedir-carta" onclick="handlePedirCarta()" class="btn btn-info">
-          pedir carta
-        </button>
-        <button onclick="handlePlantarse()" class="btn btn-primary">
-          plantarse
-        </button> 
-      </div>   
-      
     </div>
-    <!-- Do not delete this script tag, this is what connects your HTML with the Javascript code -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="/app.js"></script>
   </body>
 </html>

@@ -1,67 +1,57 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 body{
-    background: black;
+  background: black;
 }
 #tapete{
-    background-image: url("./assets/img/blackjack.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url("./assets/img/blackjack.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.card{
-    display: flex;
-    justify-content: center;
-    min-width: 100px;
-    min-height: 200px;
-    width: 100px;
-    height: 200px;
-}
-.card-mazo{
-    min-width: 200px;
-    min-height: 100px;
-    width: 200px;
-    height: 100px;
+.mazo{
+  background-color: darkgrey !important;
+  box-shadow: 16px 2px 6px 0px dimgrey !important;
+  rotate: 90deg;
 }
 .container-fluid{
-    min-height: 800px;
+  min-height: 800px;
 }
-/* cards classes */
 .carta {
-    width: 100px;
-    height: 150px;
-    background-color: white;
-    border: 1px solid black;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-  }
-  
-  .palo {
-    font-size: 2rem;
-  }
-
-  #player {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
-   #dealer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-    }
-  .numero {
-    font-size: 1.2rem;
-  }
+  width: 100px;
+  height: 150px;
+  background-color: white;
+  border: 1px solid black;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+.numero {
+  font-size: 1.2rem;
+}
+.palo {
+  font-size: 2rem;
+}
+#player, #dealer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.♦ , .♥ {
+  color: red;
+}
+.♠, .♣ {
+  color: black;
+}
