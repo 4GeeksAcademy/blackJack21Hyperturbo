@@ -16,23 +16,21 @@
     <!-- Write your HTML code here, you can delete everything withing the body tags -->
     <div id="tapete" class="container-fluid container-sm text-center d-flex flex-column justify-content-between align-items-center py-5">
       
-      <div id="banca" class="card">
-        <p id="card">aqui va una carta</p>
+      <div id="banca" class="dealerContainer">
+        <p>cartas de la banca</p>
       </div>
 
       <div id= "mazo" class="card card-mazo">
         <p>aqui va el mazo</p>
       </div>
 
-      <div id="player" class="card">
-        <p>cartas de jugador</p>
-      </div>
+      <div id="player" class="playerContainer"></div>
 
       <div>
         <button onclick="playGame()" class="btn btn-success">
           Play Game
         </button> 
-        <button onclick="handlePedirCarta()" class="btn btn-info">
+        <button id="pedir-carta" onclick="handlePedirCarta()" class="btn btn-info">
           pedir carta
         </button>
         <button onclick="handlePlantarse()" class="btn btn-primary">

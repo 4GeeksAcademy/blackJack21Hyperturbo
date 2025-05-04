@@ -26,3 +26,42 @@ body{
 .container-fluid{
     min-height: 800px;
 }
+/* cards classes */
+.carta {
+    width: 100px;
+    height: 150px;
+    background-color: white;
+    border: 1px solid black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+  }
+  
+  .palo {
+    font-size: 2rem;
+  }
+
+  #player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+   #dealer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+  .numero {
+    font-size: 1.2rem;
+  }

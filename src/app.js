@@ -12,10 +12,6 @@ import "./style.css";
 
 window.onload = function() {
   //write your code here
-  document.querySelector("body");
-  console.dir(document.querySelector("#card"));
-  document.querySelector("#card")
-
   const palos = ['♦' , '♥' , '♠',  '♣'];
   const carta = [
     {valor: 1, cuerpo: '1'},
@@ -100,13 +96,16 @@ window.onload = function() {
   const handlePedirCarta = () => {
     playerHand = pedirCarta(mazo, playerHand, playerValue); 
     playerValue = _getValue(playerHand);
-    // _renderPlayerCard();
-  
+    _renderPlayerCard();
+    if(playerValue > 21){document.querySelector('#pedir-carta').disabled = true; alert('Perdiste');}
+    
+    
     console.log("Jugador pidió carta:", playerHand);
     console.log("Puntos del jugador:", playerValue);
   };
 
   const handlePlantarse = () => {
+    document.querySelector('#pedir-carta').disabled = true;
     // _renderDealerHand();
     _dealerTurn();
     _getResult(playerValue, dealerValue);
@@ -132,6 +131,56 @@ let dealerHand = [];
 let dealerValue = 0;  
 let mazo = [];
 
+  const _renderPlayerHand = () => {
+    playerHand.forEach((card, index) => {
+      
+      document.querySelector('#player').innerHTML += 
+      `<div class="carta">
+        <div class="card-body">
+          <p class="card-text">${card.cuerpo}${card.palo}</p>
+        </div>
+      </div>`;
+      if(card.palo === '♦' || card.palo === '♥'){
+        document.querySelector('.carta').style.color = 'red';
+      }
+      if(card.palo === '♠' || card.palo === '♣'){
+        document.querySelector('.carta').style.color = 'black';
+      }
+    });
+
+  }
+
+  const _renderPlayerCard = () => {
+    const playerCard = playerHand[playerHand.length - 1];
+    
+    document.querySelector('#player').innerHTML += 
+    `<div class="carta">
+      <div class="card-body">
+        <p class="card-text">${playerCard.cuerpo}${playerCard.palo}</p>
+      </div>
+    </div>`;
+    if(playerCard.palo === '♦' || playerCard.palo === '♥'){
+      document.querySelector('.carta').style.color = 'red';
+    }
+    if(playerCard.palo === '♠' || playerCard.palo === '♣'){
+      document.querySelector('.carta').style.color = 'black';
+    }
+  }
+
+  // const _renderDealerCard = () => {
+  //   dealerHand.forEach((card, index) => {
+  //     if(card.palo === '♦' || card.palo === '♥'){
+  //       document.querySelector('.carta').style.color = 'red';
+  //     }
+  //     document.querySelector('#dealer').innerHTML += 
+  //     `<div class="carta">
+  //       <div class="card-body">
+  //         <p class="card-text">${card.cuerpo}${card.palo}</p>
+  //       </div>
+  //     </div>`;
+  //   });
+  // }
+
 const playGame = () => {
    mazo = crearMazo();
    console.log('Mazo inicial: ', mazo);
@@ -139,6 +188,7 @@ const playGame = () => {
    console.log('Mazo barajado: ', _barajarMazo(mazo));
    playerHand = _getInitialHand(mazo);
    dealerHand = _getInitialHand(mazo);
+   _renderPlayerHand();
    playerValue = _getValue(playerHand);
    dealerValue = _getValue(dealerHand);
    console.log('Mano del jugador: ', playerHand);
@@ -147,8 +197,8 @@ const playGame = () => {
    console.log("Puntos del jugador:", playerValue);
    console.log("Puntos del dealer:", dealerValue);
    
-  //  _renderPlayerHand();
-  //  _renderDealerCard();
+    
+    //_renderDealerCard();
   //  _nuevaPartida()
   }
 
