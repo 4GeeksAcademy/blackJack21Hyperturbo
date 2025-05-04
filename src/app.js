@@ -156,12 +156,11 @@ window.onload = function() {
   };
 
   const _renderResult = (result) => {
-    document.getElementById("resultText").innerText   = result;
-    document.getElementById("playerScore").innerText  = playerValue;
-    document.getElementById("dealerScore").innerText  = dealerValue;
+    document.querySelector("#resultText").innerText   = result;
+    document.querySelector("#playerScore").innerText  = playerValue;
+    document.querySelector("#dealerScore").innerText  = dealerValue;
 
-    // Mostrar el modal
-    const modalEl = document.getElementById("resultModal");
+    const modalEl = document.querySelector("#resultModal");
     new bootstrap.Modal(modalEl).show();
   }
 
